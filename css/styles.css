@@ -43,8 +43,8 @@ body {
 }
 .game-container{
   display: grid;
-  grid-column: 4;
-  grid-row: 4;
+  grid-template-columns: 4;
+
   padding: 0 1rem;
 }
 
