@@ -47,36 +47,6 @@ const defineTotalFails = () => {
   finishGame()
 }
 
-const showSelectedCard = (event) => {
-
-  const cardSelected = event.target
-  cardSelected.classList.add('card-clicked')
-  cardsSelectedGroup.push(cardSelected)
-
-  if (cardsSelectedGroup.length === 2){
-    verifyIfCardsAreEqual()
-  }
-}
-
-const verifyIfCardsAreEqual = () => {
-  const firstImageSelected = cardsSelectedGroup[0]
-  const secondImageSelected = cardsSelectedGroup[1]
-  
-
-  if (firstImageSelected.id === secondImageSelected.id){
-    firstImageSelected.classList.add('correct-answer')
-    secondImageSelected.classList.add('correct-answer')
-    
-    cardsSelectedGroup = []
-    
-    defineTotalPoints()
-
-  } else {
-    setTimeout(hideSelectedWrongCards, 900)
-    defineTotalFails()
-  }
-}
-
 const hideSelectedWrongCards = () => {
   const firstImageSelected = cardsSelectedGroup[0]
   const secondImageSelected = cardsSelectedGroup[1]
@@ -85,6 +55,52 @@ const hideSelectedWrongCards = () => {
   secondImageSelected.classList.remove('card-clicked')
 
   cardsSelectedGroup = []
+}
+
+const verifyIfCardsAreEqual = () => {
+  const firstImageSelected = cardsSelectedGroup[0]
+  const secondImageSelected = cardsSelectedGroup[1]
+  
+  if (firstImageSelected.id === secondImageSelected.id){
+    firstImageSelected.classList.add('correct-answer')
+    secondImageSelected.classList.add('correct-answer')
+    defineTotalPoints()
+    
+    cardsSelectedGroup = []
+
+  } else {
+    setTimeout(hideSelectedWrongCards, 900)
+    defineTotalFails()
+  }
+  
+}
+
+const showSelectedCard = (event) => {
+
+  const cardSelected = event.target
+  cardSelected.classList.add('card-clicked')
+  cardsSelectedGroup.push(cardSelected)
+
+  if (cardsSelectedGroup.length === 2){
+    
+    verifyIfCardsAreEqual()
+  }
+}
+
+const showAllCards = () => {
+  
+  for (let i = 0; i < imagesNumbers.length; i++){
+    gameContainer.children[i].classList.add('card-clicked')
+  }
+
+}
+
+const hideAllCards = () => {
+
+  for (let i = 0; i < imagesNumbers.length; i++){
+    gameContainer.children[i].classList.remove('card-clicked')
+  }
+
 }
 
 const addCardsToGrid = () => {
@@ -127,22 +143,6 @@ const generateRandomNumber = () => {
   imagesNumbers.sort(()=> Math.random() -0.5)
 
   addCardsToGrid()
-}
-
-const showAllCards = () => {
-  
-  for (let i = 0; i < imagesNumbers.length; i++){
-    gameContainer.children[i].classList.add('card-clicked')
-  }
-
-}
-
-const hideAllCards = () => {
-
-  for (let i = 0; i < imagesNumbers.length; i++){
-    gameContainer.children[i].classList.remove('card-clicked')
-  }
-
 }
 
 const resetGame = () => {
