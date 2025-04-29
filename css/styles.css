@@ -41,12 +41,10 @@ body {
   padding: 0 1rem;
   margin-bottom: 3.125rem;
 }
-.main{
+.game-container{
   display: grid;
   grid-column: 4;
   grid-row: 4;
-  width: 12.25rem;
-  height: 13.8125rem;
   padding: 0 1rem;
 }
 
@@ -57,7 +55,6 @@ body {
   height: 221px;
   perspective: 500px;
 }
-  
 .card-back,
 .card-front{
   position: absolute;
@@ -71,7 +68,6 @@ body {
   transition: rotate 1s;
   backface-visibility: hidden;
   box-shadow: 0 0 10px 3px rgba(27, 22, 94, 0.6);
-  
 }
 
 .card-front{
