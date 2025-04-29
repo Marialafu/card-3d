@@ -9,9 +9,17 @@
   <body>
 
     <header class="header">
-      <h1 class=" header">POKEMON, HÁZTE CON TODOS</h1>
+      <h1 class="text">POKEMON, HÁZTE CON TODOS</h1>
+      <div class="marker-container">
+        <h2 class="text" id="total-points">Total Points: 0</h2>
+        <h2 class="text" id="total-fails">Total Fails: 0</h2>
+      </div>
     </header>
     <main class="main">
+      <div class="final-message hide" id="reset-game-container">
+        <h2 class="text" id="reset-message"></h2>
+        <button class="reset-button" id="reset-button">PLAY AGAIN</button>
+      </div>
       <div id="game-container" class="game-container">
       </div>
     </main>
